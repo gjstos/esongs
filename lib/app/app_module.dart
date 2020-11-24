@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'controllers/app_controller.dart';
-import 'pages/app_widget.dart';
 import 'core/splash/splash_module.dart';
 import 'modules/home/home_module.dart';
+import 'modules/login/login_module.dart';
+import 'pages/app_widget.dart';
 
 class AppModule extends MainModule {
   @override
@@ -20,6 +21,7 @@ class AppModule extends MainModule {
           transition: TransitionType.fadeIn,
         ),
         ModularRouter('/home', module: HomeModule()),
+        ModularRouter('/login', module: LoginModule()),
       ];
 
   @override
