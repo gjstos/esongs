@@ -1,7 +1,8 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../components/pinguim.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashPage extends StatefulWidget {
@@ -47,15 +48,7 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
               ),
               Flexible(
                 flex: 2,
-                child: SizedBox(
-                  height: display.height * 0.7,
-                  child: FlareActor(
-                    'assets/penguin_music.flr',
-                    alignment: Alignment.center,
-                    fit: BoxFit.fitHeight,
-                    animation: 'walk',
-                  ),
-                ),
+                child: Pinguim(height: display.height * 0.7),
               ),
             ],
           ),
