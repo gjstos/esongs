@@ -1,3 +1,4 @@
+import 'package:esongs/app/modules/login/ui/components/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -20,16 +21,24 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[600],
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: LoginCard(),
+        body: Stack(
+          children: [
+            Background(
+              bottom: Colors.white,
+              top: Colors.blue,
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: LoginCard(),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
