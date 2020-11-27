@@ -1,7 +1,7 @@
-import 'package:esongs/app/modules/login/ui/components/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../components/background.dart';
 import '../components/login_card.dart';
 import '../controllers/login_controller.dart';
 
@@ -22,20 +22,47 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       child: Scaffold(
         backgroundColor: Colors.grey[600],
         body: Stack(
+          alignment: AlignmentDirectional.topCenter,
           children: [
             Background(
               bottom: Colors.white,
               top: Colors.blue,
             ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: LoginCard(),
+            Positioned(
+              top: 40,
+              left: 40,
+              child: RichText(
+                text: TextSpan(children: [
+                  TextSpan(
+                    text: "e-songs\n",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    children: [
+                      WidgetSpan(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 5),
+                          child: Text(
+                            "Nunca foi tão fácil gerenciar suas músicas!",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                ],
+                ]),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: LoginCard(),
               ),
             ),
           ],
