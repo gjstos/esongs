@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GradientButton extends StatelessWidget {
+  final String label;
   final List<Color> colors;
   final VoidCallback onPressed;
 
@@ -12,7 +13,9 @@ class GradientButton extends StatelessWidget {
       Color(0xFF1976D2),
       Color(0xFF42A5F5),
     ],
+    @required this.label,
   })  : assert(onPressed != null),
+        assert(label != null),
         super(key: key);
 
   @override
@@ -21,8 +24,8 @@ class GradientButton extends StatelessWidget {
       child: Ink(
         child: Container(
           alignment: Alignment.center,
-          child: const Text(
-            'log in',
+          child: Text(
+            label,
             style: TextStyle(color: Colors.white, fontSize: 20),
             textAlign: TextAlign.center,
           ),

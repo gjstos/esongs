@@ -18,7 +18,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: GestureDetector(
+          child: Text(widget.title),
+          onTap: () {
+            Modular.to.pushReplacementNamed("/login");
+          },
+        ),
       ),
       body: Column(
         children: <Widget>[],

@@ -20,7 +20,7 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 6))
-        .then((_) => Modular.to.pushReplacementNamed('/login'));
+        .then((_) => Modular.to.pushReplacementNamed('/login/options'));
   }
 
   @override
