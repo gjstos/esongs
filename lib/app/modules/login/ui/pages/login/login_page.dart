@@ -51,12 +51,15 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.arrow_back, color: Colors.blue),
-          backgroundColor: Colors.white,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 20, 0, 0),
+          child: FloatingActionButton(
+            child: Icon(Icons.arrow_back, color: Colors.blue),
+            backgroundColor: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       ),

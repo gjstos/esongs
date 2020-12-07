@@ -1,7 +1,8 @@
-import 'package:esongs/app/modules/login/ui/components/gradient_button.dart';
-import 'package:esongs/app/modules/login/ui/components/login_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../components/gradient_button.dart';
+import '../../../components/login_card.dart';
 
 class Options extends StatelessWidget {
   @override
@@ -9,6 +10,8 @@ class Options extends StatelessWidget {
     return LoginCard(
       children: [
         GradientButton(
+          begin: Alignment.centerRight,
+          end: Alignment.centerLeft,
           onPressed: () {
             Modular.link.pushNamed('/sign-in');
           },

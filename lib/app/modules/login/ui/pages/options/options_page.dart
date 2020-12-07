@@ -1,6 +1,7 @@
-import 'package:esongs/app/modules/login/ui/components/background.dart';
-import 'package:esongs/app/modules/login/ui/pages/options/components/options.dart';
 import 'package:flutter/material.dart';
+
+import '../../components/background.dart';
+import 'components/options.dart';
 
 class OptionsPage extends StatelessWidget {
   @override

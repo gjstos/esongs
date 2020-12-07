@@ -4,6 +4,8 @@ class GradientButton extends StatelessWidget {
   final String label;
   final List<Color> colors;
   final VoidCallback onPressed;
+  final AlignmentGeometry begin;
+  final AlignmentGeometry end;
 
   const GradientButton({
     Key key,
@@ -14,8 +16,15 @@ class GradientButton extends StatelessWidget {
       Color(0xFF42A5F5),
     ],
     @required this.label,
+    this.begin,
+    this.end,
   })  : assert(onPressed != null),
         assert(label != null),
+        assert(
+          (begin != null || end != null)
+              ? (begin != null && end != null)
+              : true,
+        ),
         super(key: key);
 
   @override
@@ -36,6 +45,8 @@ class GradientButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15.0)),
           gradient: LinearGradient(
             colors: colors,
+            begin: begin ?? Alignment.centerLeft,
+            end: end ?? Alignment.centerRight,
           ),
         ),
       ),
