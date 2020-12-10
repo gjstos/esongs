@@ -12,13 +12,19 @@ class Background extends StatelessWidget {
     var display = MediaQuery.of(context).size;
     return Column(
       children: [
-        Container(
-          height: display.height * 0.4,
-          color: top,
+        Flexible(
+          flex: 1,
+          child: Container(
+            height: display.height * 0.4,
+            color: top,
+          ),
         ),
-        Container(
-          height: display.height * 0.6,
-          color: bottom,
+        Flexible(
+          flex: 2,
+          child: Container(
+            height: display.height * 0.6,
+            color: bottom,
+          ),
         ),
       ],
     );

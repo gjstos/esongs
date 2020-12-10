@@ -30,7 +30,7 @@ class OptionsPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: _size.height * 0.1),
-                    Options(),
+                    Flexible(child: Options()),
                   ],
                 ),
               ),

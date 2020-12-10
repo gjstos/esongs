@@ -18,15 +18,44 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: GestureDetector(
-          child: Text(widget.title),
-          onTap: () {
-            Modular.to.pushReplacementNamed("/login");
-          },
+        title: Text('e-songs'),
+        centerTitle: true,
+        leading: SizedBox(),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.filter_list),
+            tooltip: 'Filtrar',
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.sort),
+            tooltip: 'Ordenar',
+            onPressed: () {},
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  labelText: "Pesquisar",
+                ),
+              ),
+            ),
+          ],
         ),
       ),
-      body: Column(
-        children: <Widget>[],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+        tooltip: 'Nova Música',
       ),
     );
   }
