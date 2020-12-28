@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -40,12 +42,16 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25),
+              child: SizedBox(
+                height: 45,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Pesquisar",
+                    hintStyle: TextStyle(),
                   ),
-                  labelText: "Pesquisar",
+                  textInputAction: TextInputAction.search,
+                  textAlignVertical: TextAlignVertical.bottom,
                 ),
               ),
             ),
@@ -54,7 +60,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Modular.to.pushNamed('/music');
+        },
         tooltip: 'Nova Música',
       ),
     );

@@ -13,14 +13,14 @@ class Background extends StatelessWidget {
     return Column(
       children: [
         Flexible(
-          flex: 1,
+          flex: 2,
           child: Container(
             height: display.height * 0.4,
             color: top,
           ),
         ),
         Flexible(
-          flex: 2,
+          flex: 3,
           child: Container(
             height: display.height * 0.6,
             color: bottom,

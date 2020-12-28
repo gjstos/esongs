@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../components/gradient_button.dart';
 import '../../../components/login_card.dart';
@@ -47,7 +47,16 @@ class SignIn extends StatelessWidget {
         const SizedBox(height: 20),
         GradientButton(
           onPressed: () {
-            Modular.to.pushReplacementNamed('/home');
+            Fluttertoast.showToast(
+              msg: 'Cadastro realizado com sucesso!',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.grey[200],
+              textColor: Colors.black,
+              fontSize: 16.0,
+            );
+            Navigator.of(context).pop();
           },
           label: 'Cadastrar',
         ),

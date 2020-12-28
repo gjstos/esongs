@@ -26,32 +26,30 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
   @override
   Widget build(BuildContext context) {
     var display = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey[600],
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Flexible(
-                flex: 1,
-                child: Text(
-                  'e-songs',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: GoogleFonts.openSans().fontFamily,
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
+    return Scaffold(
+      backgroundColor: Theme.of(context).accentColor,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Flexible(
+              flex: 1,
+              child: Text(
+                'e-songs',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: GoogleFonts.openSans().fontFamily,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              Flexible(
-                flex: 2,
-                child: Pinguim(height: display.height * 0.7),
-              ),
-            ],
-          ),
+            ),
+            Flexible(
+              flex: 2,
+              child: Pinguim(height: display.height * 0.7),
+            ),
+          ],
         ),
       ),
     );

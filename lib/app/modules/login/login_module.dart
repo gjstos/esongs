@@ -13,9 +13,21 @@ class LoginModule extends ChildModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter('/options', child: (_, args) => OptionsPage()),
-        ModularRouter('/login', child: (_, args) => LoginPage()),
-        ModularRouter('/sign-in', child: (_, args) => SignInPage()),
+        ModularRouter(
+          '/options',
+          child: (_, args) => OptionsPage(),
+          // transition: TransitionType.leftToRight,
+        ),
+        ModularRouter(
+          '/login',
+          child: (_, args) => LoginPage(),
+          transition: TransitionType.rightToLeftWithFade,
+        ),
+        ModularRouter(
+          '/sign-in',
+          child: (_, args) => SignInPage(),
+          transition: TransitionType.rightToLeftWithFade,
+        ),
       ];
 
   static Inject get to => Inject<LoginModule>.of();

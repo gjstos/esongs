@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../components/gradient_button.dart';
 import '../../../components/login_card.dart';
@@ -37,16 +38,10 @@ class _LoginState extends State<Login> {
             hintMaxLines: 1,
             labelText: 'Senha',
           ),
+          textAlign: TextAlign.center,
           keyboardType: TextInputType.visiblePassword,
+          obscureText: true,
         ),
-        const SizedBox(height: 20),
-        GradientButton(
-          onPressed: () {
-            Modular.to.pushReplacementNamed('/home');
-          },
-          label: 'Entrar',
-        ),
-        const SizedBox(height: 20),
         FlatButton(
           child: Text(
             "Esqueceu a senha?",
@@ -61,7 +56,23 @@ class _LoginState extends State<Login> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onPressed: () {},
-        )
+        ),
+        const SizedBox(height: 8),
+        GradientButton(
+          onPressed: () {
+            Fluttertoast.showToast(
+              msg: "Olá de novo, debugger!",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.grey[200],
+              textColor: Colors.black,
+              fontSize: 16.0,
+            );
+            Modular.to.pushReplacementNamed('/home');
+          },
+          label: 'Entrar',
+        ),
       ],
     );
   }
