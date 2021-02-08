@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../components/gradient_button.dart';
@@ -56,7 +57,7 @@ class SignIn extends StatelessWidget {
               textColor: Colors.black,
               fontSize: 16.0,
             );
-            Navigator.of(context).pop();
+            Modular.link.pop();
           },
           label: 'Cadastrar',
         ),

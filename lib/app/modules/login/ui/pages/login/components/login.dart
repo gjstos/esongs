@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
           keyboardType: TextInputType.visiblePassword,
           obscureText: true,
         ),
-        FlatButton(
+        TextButton(
           child: Text(
             "Esqueceu a senha?",
             style: TextStyle(
@@ -50,11 +50,6 @@ class _LoginState extends State<Login> {
               color: Colors.blue[900],
             ),
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          hoverColor: Colors.transparent,
-          highlightColor: Colors.transparent,
           onPressed: () {},
         ),
         const SizedBox(height: 8),
@@ -69,7 +64,7 @@ class _LoginState extends State<Login> {
               textColor: Colors.black,
               fontSize: 16.0,
             );
-            Modular.to.pushReplacementNamed('/home');
+            Modular.to.popAndPushNamed('/home');
           },
           label: 'Entrar',
         ),

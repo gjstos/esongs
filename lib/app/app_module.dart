@@ -3,9 +3,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'controllers/app_controller.dart';
 import 'core/splash/splash_module.dart';
+import 'core/user/user_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/login/login_module.dart';
 import 'modules/music/music_module.dart';
+import 'modules/playlist/playlist_module.dart';
 import 'pages/app_widget.dart';
 
 class AppModule extends MainModule {
@@ -24,6 +26,8 @@ class AppModule extends MainModule {
         ModularRouter('/home', module: HomeModule()),
         ModularRouter('/login', module: LoginModule()),
         ModularRouter('/music', module: MusicModule()),
+        ModularRouter('/playlist', module: PlaylistModule()),
+        ModularRouter('/user', module: UserModule()),
       ];
 
   @override

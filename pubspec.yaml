@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  equatable: ^1.2.5
   fluttertoast: ^7.1.6
   animations: ^1.1.2
   google_fonts: ^1.1.1
@@ -30,6 +31,10 @@ dependencies:
   mobx: ^1.2.1+4
   flutter_modular: ^2.0.1
   cupertino_icons: ^1.0.0
+  string_validator: ^0.1.4
+  asuka: 
+  dartz: ^0.9.1
+  graphql_flutter: ^3.1.0
   
   flutter:
     sdk: flutter
@@ -97,4 +102,5 @@ vars:
 scripts:
   mobx_build: $runner build
   mobx_watch: $clean & $get & $runner watch
+  mobx_watch_clean: $clean & $get & $runner watch --delete-conflicting-outputs
   mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs

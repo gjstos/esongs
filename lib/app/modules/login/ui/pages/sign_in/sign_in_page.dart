@@ -12,35 +12,38 @@ class SignInPage extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
+            child: Stack(
               children: [
-                SizedBox(height: _size.height * 0.1),
-                Text(
-                  "e-songs",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
+                Positioned(
+                  top: 25,
+                  child: FloatingActionButton(
+                    child: Icon(Icons.arrow_back, color: Colors.blue),
+                    backgroundColor: Colors.white,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
-                SizedBox(height: _size.height * 0.1),
-                SignIn(),
+                Column(
+                  children: [
+                    SizedBox(height: _size.height * 0.1),
+                    Text(
+                      "e-songs",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: _size.height * 0.1),
+                    SignIn(),
+                  ],
+                ),
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 20, 0, 0),
-        child: FloatingActionButton(
-          child: Icon(Icons.arrow_back, color: Colors.blue),
-          backgroundColor: Colors.white,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
     );
   }
 }
