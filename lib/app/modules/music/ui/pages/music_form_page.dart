@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../domain/entities/music.dart';
 import '../components/custom_flatbutton.dart';
+import '../form_controller.dart';
 
 class MusicFormPage extends StatefulWidget {
+  final Musica musica;
+
+  const MusicFormPage({Key key, @required this.musica}) : super(key: key);
+
   @override
   _MusicFormPageState createState() => _MusicFormPageState();
 }
 
-class _MusicFormPageState extends State<MusicFormPage> {
+class _MusicFormPageState
+    extends ModularState<MusicFormPage, MusicFormController> {
+  @override
+  void initState() {
+    super.initState();
+
+    controller.init(widget.musica);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +54,13 @@ class _MusicFormPageState extends State<MusicFormPage> {
                     CustomFlatButton(
                       label: 'Salvar',
                       onTap: () {
-                        Modular.navigator.pop();
+                        var nome = controller.nomeController.text;
+                        var duracao = controller.duracaoController.text;
+
+                        widget.musica.nome = nome;
+                        widget.musica.duracao = int.parse(duracao);
+
+                        Modular.navigator.pop(context);
                       },
                       textStyle: TextStyle(
                         color: Colors.green,
@@ -53,13 +73,10 @@ class _MusicFormPageState extends State<MusicFormPage> {
               const SizedBox(height: 10),
               Align(
                 alignment: Alignment.center,
-                child: GestureDetector(
-                  child: CircleAvatar(
-                    backgroundColor: Theme.of(context).accentColor,
-                    child: Icon(Icons.photo_camera, color: Colors.white),
-                    minRadius: 40,
-                  ),
-                  onTap: () {},
+                child: CircleAvatar(
+                  backgroundColor: Theme.of(context).accentColor,
+                  child: Text(_circularText(widget.musica.nome)),
+                  minRadius: 40,
                 ),
               ),
               const SizedBox(height: 15),
@@ -69,6 +86,7 @@ class _MusicFormPageState extends State<MusicFormPage> {
               ),
               const SizedBox(height: 20),
               TextField(
+                controller: controller.nomeController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Nome da Música',
@@ -77,6 +95,8 @@ class _MusicFormPageState extends State<MusicFormPage> {
               ),
               const SizedBox(height: 10),
               TextField(
+                keyboardType: TextInputType.number,
+                controller: controller.duracaoController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Duração',
@@ -132,5 +152,11 @@ class _MusicFormPageState extends State<MusicFormPage> {
         ),
       ),
     );
+  }
+
+  String _circularText(String string) {
+    var sufix = string.split(' ')[1];
+    var prefix = string[0].toUpperCase();
+    return '$prefix$sufix';
   }
 }

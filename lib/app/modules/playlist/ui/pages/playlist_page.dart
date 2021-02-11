@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../music_controller.dart';
+import '../../domain/entities/playlist.dart';
+import 'playlist_controller.dart';
 
-class MusicPage extends StatefulWidget {
-  final String title;
-  const MusicPage({Key key, this.title = "Music"}) : super(key: key);
+class PlaylistPage extends StatefulWidget {
+  final Playlist playlist;
+  const PlaylistPage({
+    Key key,
+    this.playlist,
+  }) : super(key: key);
 
   @override
-  _MusicPageState createState() => _MusicPageState();
+  _PlaylistPageState createState() => _PlaylistPageState();
 }
 
-class _MusicPageState extends ModularState<MusicPage, MusicController> {
-  //use 'controller' variable to access controller
-
+class _PlaylistPageState
+    extends ModularState<PlaylistPage, PlaylistController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,13 +50,11 @@ class _MusicPageState extends ModularState<MusicPage, MusicController> {
                     itemCount: controller.list.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        onTap: () async {
-                          await Modular.to.pushNamed(
-                            '/music/music-form',
+                        onTap: () {
+                          Modular.to.pushNamed(
+                            '/playlist/playlist-form',
                             arguments: controller.list[index],
                           );
-
-                          print(controller.list[index].nome);
                         },
                         leading: CircleAvatar(
                           child: Text(
@@ -61,14 +62,6 @@ class _MusicPageState extends ModularState<MusicPage, MusicController> {
                           ),
                         ),
                         title: Text(controller.list[index].nome),
-                        subtitle: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Artista:'),
-                            Text('Gêneros:'),
-                          ],
-                        ),
                       );
                     },
                     separatorBuilder: (_, __) {
@@ -83,17 +76,15 @@ class _MusicPageState extends ModularState<MusicPage, MusicController> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          Modular.to.pushNamed('/music/music-form');
-        },
-        tooltip: 'Nova Música',
+        onPressed: () {},
+        tooltip: 'Nova Playlist',
       ),
     );
   }
 
   String _circularText(String string) {
     var sufix = string.split(' ')[1];
-    var prefix = string[0].toUpperCase();
+    var prefix = string.substring(0, 2).toUpperCase();
     return '$prefix$sufix';
   }
 }

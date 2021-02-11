@@ -19,18 +19,41 @@ final $MusicController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$MusicController on _MusicControllerBase, Store {
-  final _$valueAtom = Atom(name: '_MusicControllerBase.value');
+  Computed<List<Musica>> _$listComputed;
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  List<Musica> get list =>
+      (_$listComputed ??= Computed<List<Musica>>(() => super.list,
+              name: '_MusicControllerBase.list'))
+          .value;
+
+  final _$musicasAtom = Atom(name: '_MusicControllerBase.musicas');
+
+  @override
+  ObservableList<Musica> get musicas {
+    _$musicasAtom.reportRead();
+    return super.musicas;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set musicas(ObservableList<Musica> value) {
+    _$musicasAtom.reportWrite(value, super.musicas, () {
+      super.musicas = value;
+    });
+  }
+
+  final _$searchAtom = Atom(name: '_MusicControllerBase.search');
+
+  @override
+  String get search {
+    _$searchAtom.reportRead();
+    return super.search;
+  }
+
+  @override
+  set search(String value) {
+    _$searchAtom.reportWrite(value, super.search, () {
+      super.search = value;
     });
   }
 
@@ -38,11 +61,22 @@ mixin _$MusicController on _MusicControllerBase, Store {
       ActionController(name: '_MusicControllerBase');
 
   @override
-  void increment() {
+  void updateSearch(String value) {
     final _$actionInfo = _$_MusicControllerBaseActionController.startAction(
-        name: '_MusicControllerBase.increment');
+        name: '_MusicControllerBase.updateSearch');
     try {
-      return super.increment();
+      return super.updateSearch(value);
+    } finally {
+      _$_MusicControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void add(Musica musica) {
+    final _$actionInfo = _$_MusicControllerBaseActionController.startAction(
+        name: '_MusicControllerBase.add');
+    try {
+      return super.add(musica);
     } finally {
       _$_MusicControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -51,7 +85,9 @@ mixin _$MusicController on _MusicControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+musicas: ${musicas},
+search: ${search},
+list: ${list}
     ''';
   }
 }

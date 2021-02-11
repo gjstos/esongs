@@ -27,19 +27,16 @@ class _HomeWidgetState extends State<HomeWidget>
       appBar: AppBar(
         title: Text('E-SONGS'),
         centerTitle: true,
-        leading: SizedBox(),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.filter_list),
-            tooltip: 'Filtrar',
-            onPressed: () {},
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            child: CircleAvatar(
+              child: Text('Dev'),
+              backgroundColor: Colors.amber,
+            ),
+            onTap: () => Modular.to.pushNamed('/user'),
           ),
-          IconButton(
-            icon: Icon(Icons.sort),
-            tooltip: 'Ordenar',
-            onPressed: () {},
-          )
-        ],
+        ),
         bottom: TabBar(
           controller: _tabController,
           tabs: [
